@@ -1,0 +1,7 @@
+streamlit
+datetime
+sklearn
+yfinance
+fbprophet
+plotly
+pandas_ods_reader
