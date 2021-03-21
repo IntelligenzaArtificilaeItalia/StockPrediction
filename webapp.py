@@ -212,6 +212,13 @@ if(st.sidebar.button('Procedi con la Previsione del Titolo')):
 	error2 = st.warning('Quindi è vivamente SCONSIGLIATO investire i propri capitali tenendo conto esclusivamente di questo strumento...')
 	error3 = st.info('Invece è CONSIGLIATO fare prima degli accurati studi sul titolo o opzione su cui si vuole investire e solo successivamente fare ulteriori Controlli o Verifiche utilizzando lo strumento...')
 	
+	st.markdown('<bold> Se ti è stato di aiuto condividi il nostro sito per supportarci </bold>\
+			   <ul> \
+			  <li><a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fintelligenzaartificialeitalia.net%2F" target="blank" rel="noopener noreferrer">Condividi su Facebook</a></li> \
+			  <li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fintelligenzaartificialeitalia.net%2F&text=Blog%2C+Forum%2C+Progetti%2C+e+Servizi+Gratuiti+completamente+dedicati+all%27+Intelligenza+Artificiale." target="blank" rel="noopener noreferrer">Condividi su Twitter</a></li> \
+			  <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.intelligenzaartificialeitalia.net%2F&title=IntelligenzaArtificialeItalia=Blog%2C+Forum%2C+Progetti%2C+e+Servizi+Gratuiti+completamente+dedicati+all%27+Intelligenza+Artificiale.&source=IntelligenzaArtificialeItalia" target="blank" rel="noopener noreferrer">Condividi su Linkedin</a></li>\
+			</ul>', unsafe_allow_html=True)	
+	
 	st.text("")
 	st.text("")
 	st.text("")
