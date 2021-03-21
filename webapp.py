@@ -59,8 +59,9 @@ def caricaForex():
 START = "2000-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
-st.title('INTELLIGENZA ARTFICIALE ITALIA')
-st.text(' Predizione Stock Price con fbprophet \n1) Seleziona il titolo del quale vuoi stimare un ipotetico StockPrice Trend\n2) Seleziona utilizzando le slide il periodo da pedirre\n3) Inserisci il numero e il prezzo delle azioni \n4) Premi Procedi con la previsione e attendi Predizione\n\n\n')
+st.markdown("<h1 style='text-align: center; background-color: black;'><bold style='color:green;'>INTELLIGENZA<bold style='color:white;'>ARTIFICIALE<bold style='color:red;'>ITALIA</bold></bold></bold></h1>", unsafe_allow_html=True)
+st.subheader('Effettua predizioni con la nostra Intelligenza Artificiale !')
+st.markdown(' <br>1) Seleziona il titolo del quale vuoi stimare un ipotetico StockPrice Trend<br>2) Seleziona utilizzando le slide il periodo da pedirre<br>3) Inserisci il numero e il prezzo delle azioni <br>4) Premi Procedi con la previsione e attendi Predizione<br><br><br>', unsafe_allow_html=True)
 
 st.sidebar.subheader('\n\n1) Selezionare Opzione')
 option = ('CRYPTO','FOREX', 'TITOLI', 'ETF')
@@ -91,6 +92,18 @@ data_load_state = st.info('Caricamento Dati')
 data = load_data(selected_stock)
 data_load_state.success('Dati caricati con successo !')
 
+info = st.sidebar.checkbox("Visualizza Info")
+if(info):
+	msft = yf.Ticker(selected_stock)
+	st.write("Short name : " + msft.info["shortName"])
+	st.write("Exchange TimezoneName : " + msft.info["exchangeTimezoneName"])
+	st.write("Mercato : " + msft.info["market"])
+	st.write("QuoteType : " + msft.info["quoteType"])
+	st.write("")
+	st.write("")
+	st.write("Raccomandazioni Pubbliche ufficiali")
+	st.write(msft.recommendations)
+	#st.write(msft.info)
 
 if(st.sidebar.checkbox('Visualizza andamento titolo')):
 	st.subheader('Grafico Andamento Titolo ' + selected_stock)
@@ -194,7 +207,14 @@ if(st.sidebar.button('Procedi con la Previsione del Titolo')):
 		txt3 = st.text(f'Metriche valutazione modello predittivo : \n 1)Errore Medio Assoluto : {round(mae,3)} \n2) Errore Medio Quadratico : {round(mse,3)}')
 
 	model_load_state.success('Previsione su ' + selected_stock + ' Completata ...')
-	
+	st.balloons()
 	error = st.error('Attenzione !  Questo strumento NON tiene conto di Guerre, Pandemie, Speculazioni, Possibili esplosioni di bolle, Scandali o Colpi di Stato.')
 	error2 = st.warning('Quindi è vivamente SCONSIGLIATO investire i propri capitali tenendo conto esclusivamente di questo strumento...')
 	error3 = st.info('Invece è CONSIGLIATO fare prima degli accurati studi sul titolo o opzione su cui si vuole investire e solo successivamente fare ulteriori Controlli o Verifiche utilizzando lo strumento...')
+	
+	st.text("")
+	st.text("")
+	st.text("")
+	st.text("")
+	st.write("Proprietà intellettuale di [Intelligenza Artificiale Italia © ](https://intelligenzaartificialeitalia.net)")
+	st.write("Hai un idea e vuoi realizzare un Applicazione Web Intelligente? contatta il nostro [Team di sviluppatori © ](mailto:python.ai.solution@gmail.com)")
