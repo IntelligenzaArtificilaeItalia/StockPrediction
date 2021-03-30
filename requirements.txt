@@ -1,5 +1,5 @@
 streamlit
-pystan==3.0.0b8
+pystan==2.19.1.1
 datetime
 sklearn
 yfinance
