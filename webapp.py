@@ -59,7 +59,7 @@ def caricaForex():
 START = "2000-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
-st.markdown("<h1 style='text-align: center; background-color: black;'><bold style='color:green;'>INTELLIGENZA<bold style='color:white;'>ARTIFICIALE<bold style='color:red;'>ITALIA</bold></bold></bold></h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; background-color: black;font-size:16px;'><bold style='color:green;'>INTELLIGENZA<bold style='color:white;'>ARTIFICIALE<bold style='color:red;'>ITALIA</bold></bold></bold></h1>", unsafe_allow_html=True)
 st.subheader('Effettua predizioni con la nostra Intelligenza Artificiale !')
 st.markdown(' <br>1) Seleziona il titolo del quale vuoi stimare un ipotetico StockPrice Trend<br>2) Seleziona utilizzando le slide il periodo da pedirre<br>3) Inserisci il numero e il prezzo delle azioni <br>4) Premi Procedi con la previsione e attendi Predizione<br><br><br>', unsafe_allow_html=True)
 
