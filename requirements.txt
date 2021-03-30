@@ -1,7 +1,8 @@
 streamlit
+pystan
 datetime
 sklearn
 yfinance
-fbprophet==0.7
+fbprophet
 plotly
 pandas_ods_reader
