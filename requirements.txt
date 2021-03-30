@@ -3,6 +3,6 @@ pystan
 datetime
 sklearn
 yfinance
-fbprophet
+fbprophet==0.7
 plotly
 pandas_ods_reader
