@@ -6,6 +6,7 @@ from fbprophet import Prophet
 from fbprophet.plot import plot_plotly
 from plotly import graph_objs as go
 from plotly.subplots import make_subplots
+import datetime
 
 def load_data(ticker, inizio, fine):
     data = yf.download(ticker, inizio, fine)
