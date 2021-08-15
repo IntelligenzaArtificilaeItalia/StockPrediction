@@ -90,8 +90,8 @@ if(selected_option == 'CRYPTO'):
 
 
 data_load_state = st.info('Caricamento Dati')
-inizio = st.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2010, 1, 1))
-fine = st.date_input("Da che data di fine desideri allenare la rete", datetime.today())
+inizio = st.sidebar.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2010, 1, 1))
+fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", date.today())
 
 data = load_data(selected_stock,inizio,fine)
 data_load_state.success('Dati caricati con successo !')
