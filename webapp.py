@@ -7,8 +7,8 @@ from fbprophet.plot import plot_plotly
 from plotly import graph_objs as go
 from plotly.subplots import make_subplots
 
-def load_data(ticker):
-    data = yf.download(ticker, START, TODAY)
+def load_data(ticker, inizio, fine):
+    data = yf.download(ticker, inizio, fine)
     data.reset_index(inplace=True)
     return data
     
@@ -89,7 +89,10 @@ if(selected_option == 'CRYPTO'):
 
 
 data_load_state = st.info('Caricamento Dati')
-data = load_data(selected_stock)
+inizio = st.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2010, 1, 1))
+fine = st.date_input("Da che data di fine desideri allenare la rete", datetime.today())
+
+data = load_data(selected_stock,inizio,fine)
 data_load_state.success('Dati caricati con successo !')
 
 info = st.sidebar.checkbox("Visualizza Info")
