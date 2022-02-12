@@ -60,8 +60,19 @@ def caricaForex():
 START = "2000-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
-st.markdown("<h1 style='text-align: center; background-color: black;font-size:16px;'><bold style='color:green;'>INTELLIGENZA<bold style='color:white;'>ARTIFICIALE<bold style='color:red;'>ITALIA</bold></bold></bold></h1>", unsafe_allow_html=True)
-st.subheader('Effettua predizioni con la nostra Intelligenza Artificiale !')
+st.set_page_config(page_title="Italian Intelligence Analytic Suite by I.A. Italia", page_icon="📈", layout='wide', initial_sidebar_state='auto')
+
+st.markdown("<center><h1> Italian Intelligence Investments Suite <small><br> Powered by INTELLIGENZAARTIFICIALEITALIA.NET </small></h1>", unsafe_allow_html=True)
+st.write('<p style="text-align: center;font-size:15px;" > <bold>Tutti i tool di Analisi, Forecast e Visualizzazione di Dati finanziari in unico Posto <bold>  </bold><p>', unsafe_allow_html=True)
+
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 st.markdown(' <br>1) Seleziona il titolo del quale vuoi stimare un ipotetico StockPrice Trend<br>2) Seleziona utilizzando le slide il periodo da pedirre<br>3) Inserisci il numero e il prezzo delle azioni <br>4) Premi Procedi con la previsione e attendi Predizione<br><br><br>', unsafe_allow_html=True)
 
 st.sidebar.subheader('\n\n1) Selezionare Opzione')
