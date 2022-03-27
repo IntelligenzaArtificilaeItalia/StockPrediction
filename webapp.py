@@ -142,6 +142,7 @@ if(selected_option == 'TITOLI'):
 		st.write("QuoteType : " + msft.info["quoteType"])
 		st.write("")
 		st.write("Divindendi  : " + msft.dividends)
+		st.write(msft.dividends)
 		st.write("Splits  : " + msft.splits)
 		st.write("")
 		st.write("Finanziarie  : " + msft.financials)
