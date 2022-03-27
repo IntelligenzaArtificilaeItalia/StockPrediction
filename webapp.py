@@ -8,10 +8,11 @@ from plotly import graph_objs as go
 from plotly.subplots import make_subplots
 import datetime
 
-def load_data(ticker, inizio, fine):
-    data = yf.download(ticker, inizio, fine)
+def load_data(ticker, inizio, fine,intervallo):
+    data = yf.download(ticker, inizio, fine, interval=intervallo)
     data.reset_index(inplace=True)
     return data
+    
     
 def caricaCrypto():
 	from pandas_ods_reader import read_ods
@@ -106,6 +107,8 @@ fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", da
 
 data = load_data(selected_stock,inizio,fine)
 data_load_state.success('Dati caricati con successo !')
+Intervalli = ('1d', '4h', '1h', '30m',  '15m', '5m', '1m' )
+intervallo = st.sidebar.selectbox("Seleziona l'intervallo", Intervalli)
 
 info = st.sidebar.checkbox("Visualizza Info")
 if(info):
