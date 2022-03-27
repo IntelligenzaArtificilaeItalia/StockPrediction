@@ -118,10 +118,12 @@ if intervallo != '1d' and intervallo != '1h':
 if intervallo == '1h' :
 	tt = 'index'
 
-data[tt] = data[tt].tz_localize(None)
+
 
 with st.expander("Guarda dati"):
 	st.dataframe(data)
+
+data[tt] = data[tt].tz_convert(None)
 
 info = st.sidebar.checkbox("Visualizza Info")
 if(info):
