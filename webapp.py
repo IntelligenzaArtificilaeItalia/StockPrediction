@@ -102,8 +102,8 @@ if(selected_option == 'CRYPTO'):
 
 
 data_load_state = st.info('Caricamento Dati')
-inizio = st.sidebar.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2015, 1, 1))
-fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", date.today())
+#inizio = st.sidebar.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2015, 1, 1))
+#fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", date.today())
 
 periodi = ( "ytd","1d","5d","1mo","3mo","6mo","1y","2y","5y","10y","max" )
 periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
