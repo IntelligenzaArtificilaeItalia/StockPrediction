@@ -105,9 +105,18 @@ data_load_state = st.info('Caricamento Dati')
 #inizio = st.sidebar.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2015, 1, 1))
 #fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", date.today())
 
-periodi = ( "ytd","1d","5d","1mo","3mo","6mo","1y","2y","5y","10y","max" )
+tipoinvestitori = ( "Long Term","Short Term" )
+
+if tipoinvestitori == "Long Term":
+	periodi = ( "ytd","6mo","1y","2y","5y","10y","max" )
+	intervalli = ('1d')
+
+if tipoinvestitori == "Short Term":
+	periodi = ( "ytd","1d","5d","1mo","3mo","6mo" )
+	intervalli = ('1d','1h', '30m',  '15m', '5m')
+
 periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
-intervalli = ('1d','1h', '30m',  '15m', '5m' )
+
 intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
 data = load_data(selected_stock,periodo,intervallo)
@@ -121,16 +130,7 @@ if intervallo != '1d' and intervallo != '1h':
 if intervallo == '1h' :
 	tt = 'index'
 
-
-
-with st.expander("Guarda dati"):
-	st.dataframe(data)
-
 data[tt] = data[tt].dt.tz_localize(None)
-dataPD=pd.DataFrame(data=data)
-#st.write(dataPD.dtypes)
-
-#data[tt] = data[tt].tz_convert(None)
 
 if(selected_option == 'TITOLI'):
 	info = st.sidebar.checkbox("Visualizza Info TITOLO")
