@@ -114,9 +114,8 @@ intervallo=""
 
 if investitore == "Long Term":
 	periodi = ( "ytd","6mo","1y","2y","5y","10y","max" )
-	intervalli = ('1d','1w')
 	periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
-	intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
+	intervallo = '1d'
 
 if investitore == "Short Term":
 	periodi = ( "ytd","1d","5d","1mo","3mo","6mo" )
