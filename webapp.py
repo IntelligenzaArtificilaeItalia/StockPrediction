@@ -115,7 +115,7 @@ tt = 'Date'
 if intervallo != '1d' :
 	tt = 'Datetime'
 
-st.expander("Dati"):
+with st.expander("Dati"):
 	st.dataframe(data)
 
 info = st.sidebar.checkbox("Visualizza Info")
