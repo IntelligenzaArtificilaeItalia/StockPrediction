@@ -9,8 +9,8 @@ from plotly.subplots import make_subplots
 import datetime
 import pandas as pd
 
-def load_data(ticker, inizio, fine,intervallo):
-    data = yf.download(ticker, inizio, fine, interval=intervallo)
+def load_data(ticker, periodo,intervallo):
+    data = yf.download(ticker, period=periodo, interval=intervallo)
     data.reset_index(inplace=True)
     return data
     
@@ -105,10 +105,12 @@ data_load_state = st.info('Caricamento Dati')
 inizio = st.sidebar.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2015, 1, 1))
 fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", date.today())
 
+periodi = ( "ytd","1d","5d","1mo","3mo","6mo","1y","2y","5y","10y","max" )
+periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
 intervalli = ('1d','1h', '30m',  '15m', '5m' )
 intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
-data = load_data(selected_stock,inizio,fine,intervallo)
+data = load_data(selected_stock,periodo,intervallo)
 data_load_state.success('Dati caricati con successo !')
 
 tt = 'Date'
