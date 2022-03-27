@@ -112,17 +112,16 @@ investitore = st.sidebar.selectbox("Che tipo di investitore sei ? ", tipoinvesti
 periodo=""
 intervallo=""
 
-if tipoinvestitori == "Long Term":
+if investitore == "Long Term":
 	periodi = ( "ytd","6mo","1y","2y","5y","10y","max" )
 	intervalli = ('1d','1d')
 	periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
 	intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
-if tipoinvestitori == "Short Term":
+if investitore == "Short Term":
 	periodi = ( "ytd","1d","5d","1mo","3mo","6mo" )
 	intervalli = ('1d','1h', '30m',  '15m', '5m')
 	periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
-
 	intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
 if( st.sidebar.button("Carica i dati") ):
