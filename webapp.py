@@ -173,8 +173,7 @@ if(selected_option == 'TITOLI'):
 		st.write("Utile Trimestrale : ")	
 		st.write(msft.quarterly_earnings)
 		st.write("")				
-		st.write("Sostenibilità : ")	
-		msft.sustainability
+
 		st.write("Calendario : " )	
 		st.write(msft.calendar)
 		st.write("Notizie : " )
