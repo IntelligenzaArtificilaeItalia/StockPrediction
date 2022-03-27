@@ -13,7 +13,6 @@ def load_data(ticker, inizio, fine,intervallo):
     data.reset_index(inplace=True)
     return data
     
-    
 def caricaCrypto():
 	from pandas_ods_reader import read_ods
 	path = "Crypto.ods"
@@ -104,12 +103,19 @@ if(selected_option == 'CRYPTO'):
 data_load_state = st.info('Caricamento Dati')
 inizio = st.sidebar.date_input("Da che data di inizio desideri allenare la rete", datetime.date(2015, 1, 1))
 fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", date.today())
-intervalli = ('1d', '4h', '1h', '30m',  '15m', '5m', '1m' )
+
+intervalli = ('1d','1h', '30m',  '15m', '5m' )
 intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
+
 data = load_data(selected_stock,inizio,fine,intervallo)
 data_load_state.success('Dati caricati con successo !')
 
-with st.expander("Dati"):
+tt = 'Date'
+
+if intervallo != '1d' :
+	tt = 'Datetime'
+
+st.expander("Dati"):
 	st.dataframe(data)
 
 info = st.sidebar.checkbox("Visualizza Info")
@@ -130,15 +136,15 @@ if(st.sidebar.checkbox('Visualizza andamento titolo')):
 	# Plot raw data
 	def plot_raw_data():
 		fig = go.Figure()
-		fig.add_trace(go.Scatter(x=data['Date'], y=data['Open'], name="Stock Open"))
-		fig.add_trace(go.Scatter(x=data['Date'], y=data['Close'], name="Stock Close"))
+		fig.add_trace(go.Scatter(x=data[tt], y=data['Open'], name="Stock Open"))
+		fig.add_trace(go.Scatter(x=data[tt], y=data['Close'], name="Stock Close"))
 		fig.layout.update(title_text='Andamento titolo nel tempo', xaxis_rangeslider_visible=True)
 		st.plotly_chart(fig)
 		
 	plot_raw_data()
 	
 	def plot_raw_data1():
-		fig = go.Figure(data=[go.Candlestick(x=data['Date'],
+		fig = go.Figure(data=[go.Candlestick(x=data[tt],
 	        open=data['Open'], high=data['High'],
 	        low=data['Low'], close=data['Close'])
 	             ])
@@ -179,8 +185,8 @@ if(st.sidebar.button('Procedi con la Previsione del Titolo')):
 	model_load_state = st.info('Sto Creando la Rete Neurale su ' + selected_stock + ' ...')
 
 	# Predict forecast with Prophet.
-	df_train = data[['Date','Close']]
-	df_train = df_train.rename(columns={"Date": "ds", "Close": "y"})
+	df_train = data[[tt,'Close']]
+	df_train = df_train.rename(columns={tt: "ds", "Close": "y"})
 
 	model_load_state.info('Sto Allenando la Rete Neurale su ' + selected_stock + ' ...')
 
