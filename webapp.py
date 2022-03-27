@@ -112,11 +112,13 @@ data_load_state.success('Dati caricati con successo !')
 
 tt = 'Date'
 
-if intervallo != '1d' :
+if intervallo != '1d' and intervallo != '1h':
 	tt = 'Datetime'
 
 if intervallo == '1h' :
 	tt = 'index'
+
+data[tt] = data[tt].datetime.tz_localize(None)
 
 with st.expander("Guarda dati"):
 	st.dataframe(data)
