@@ -7,6 +7,7 @@ from fbprophet.plot import plot_plotly
 from plotly import graph_objs as go
 from plotly.subplots import make_subplots
 import datetime
+import pandas as pd
 
 def load_data(ticker, inizio, fine,intervallo):
     data = yf.download(ticker, inizio, fine, interval=intervallo)
