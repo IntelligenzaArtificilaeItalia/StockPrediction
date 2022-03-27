@@ -141,7 +141,7 @@ if(selected_option == 'TITOLI'):
 		st.write("Mercato : " + msft.info["market"])
 		st.write("QuoteType : " + msft.info["quoteType"])
 		st.write("")
-		st.write("Divindendi  : " + msft.dividends)
+		st.write("Divindendi  : ")
 		st.write(msft.dividends)
 		st.write("Splits  : " + msft.splits)
 		st.write("")
