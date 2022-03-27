@@ -106,6 +106,7 @@ data_load_state = st.info('Caricamento Dati')
 #fine = st.sidebar.date_input("Da che data di fine desideri allenare la rete", date.today())
 
 tipoinvestitori = ( "Long Term","Short Term" )
+investitore = st.sidebar.selectbox("Che tipo di investitore sei ? ", tipoinvestitori)
 
 if tipoinvestitori == "Long Term":
 	periodi = ( "ytd","6mo","1y","2y","5y","10y","max" )
