@@ -109,6 +109,8 @@ intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 data = load_data(selected_stock,inizio,fine,intervallo)
 data_load_state.success('Dati caricati con successo !')
 
+st.expander("Dati"):
+	st.dataframe(data)
 
 info = st.sidebar.checkbox("Visualizza Info")
 if(info):
