@@ -118,6 +118,9 @@ if intervallo != '1d' :
 if intervallo == '1h' :
 	tt = 'index'
 
+with st.expander("Guarda dati"):
+	st.dataframe(data)
+
 info = st.sidebar.checkbox("Visualizza Info")
 if(info):
 	msft = yf.Ticker(selected_stock)
