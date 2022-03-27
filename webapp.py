@@ -108,20 +108,22 @@ data_load_state = st.info('Caricamento Dati')
 tipoinvestitori = ( "Long Term","Short Term" )
 investitore = st.sidebar.selectbox("Che tipo di investitore sei ? ", tipoinvestitori)
 
-periodi = ( "ytd","6mo","1y","2y","5y","10y","max" )
-intervalli = ('1d','1h', '30m',  '15m', '5m')
+
+periodo=""
+intervallo=""
 
 if tipoinvestitori == "Long Term":
 	periodi = ( "ytd","6mo","1y","2y","5y","10y","max" )
 	intervalli = ('1d','1d')
+	periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
+	intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
 if tipoinvestitori == "Short Term":
 	periodi = ( "ytd","1d","5d","1mo","3mo","6mo" )
 	intervalli = ('1d','1h', '30m',  '15m', '5m')
+	periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
 
-periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
-
-intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
+	intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
 data = load_data(selected_stock,periodo,intervallo)
 data_load_state.success('Dati caricati con successo !')
