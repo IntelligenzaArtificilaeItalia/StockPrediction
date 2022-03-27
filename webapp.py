@@ -174,7 +174,7 @@ if(selected_option == 'TITOLI'):
 		st.write(msft.quarterly_earnings)
 		st.write("")				
 		st.write("Sostenibilità : ")	
-		st.dataframe(msft.sustainability)
+		msft.sustainability
 		st.write("Calendario : " )	
 		st.write(msft.calendar)
 		st.write("Notizie : " )
