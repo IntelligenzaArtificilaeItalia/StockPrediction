@@ -123,7 +123,7 @@ if intervallo == '1h' :
 with st.expander("Guarda dati"):
 	st.dataframe(data)
 
-data[tt] = data[tt].tz_convert(None)
+#data[tt] = data[tt].tz_convert(None)
 
 info = st.sidebar.checkbox("Visualizza Info")
 if(info):
