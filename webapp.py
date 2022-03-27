@@ -114,7 +114,7 @@ intervallo=""
 
 if investitore == "Long Term":
 	periodi = ( "ytd","6mo","1y","2y","5y","10y","max" )
-	intervalli = ('1d','1d')
+	intervalli = ('1d','1w')
 	periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
 	intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
@@ -124,7 +124,7 @@ if investitore == "Short Term":
 	periodo = st.sidebar.selectbox("Seleziona il periodo da analizzare", periodi)
 	intervallo = st.sidebar.selectbox("Seleziona l'intervallo", intervalli)
 
-if( st.sidebar.button("Carica i dati") ):
+if( st.sidebar.checkbox("Carica i dati") ):
 
 
 	data = load_data(selected_stock,periodo,intervallo)
