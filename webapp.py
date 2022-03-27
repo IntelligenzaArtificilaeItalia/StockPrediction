@@ -126,7 +126,7 @@ with st.expander("Guarda dati"):
 
 data[tt] = data[tt].dt.tz_localize(None)
 dataPD=pd.DataFrame(data=data)
-st.write(dataPD.dtypes)
+#st.write(dataPD.dtypes)
 
 #data[tt] = data[tt].tz_convert(None)
 
