@@ -246,8 +246,6 @@ if( st.sidebar.checkbox("Carica i dati") ):
 	
 	if investitore == "Short Term":
 		st.sidebar.subheader('\n\n3) Selezionare periodo di predizione')
-		n_years = st.sidebar.slider('Numero di Giorni :', 0, 1)
-		period_y = n_years * 24 * 60
 
 		n_moth = st.sidebar.slider('Numero di ore :',0, 23)
 		period_m = n_moth * 60
@@ -255,7 +253,7 @@ if( st.sidebar.checkbox("Carica i dati") ):
 		n_week = st.sidebar.slider('Numero di minuti :', 0, 59)
 		period_w = n_week 
 
-		period = period_y + period_m + period_w 
+		period =  period_m + period_w 
 
 	st.sidebar.subheader('\n\n4) Selezionare numero dei titoli posseduti o da acquistare e il Prezzo($) di acquisto')
 	azioni = st.sidebar.number_input('Numero Azioni Possedute', 0.00)
