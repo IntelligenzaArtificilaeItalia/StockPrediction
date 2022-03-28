@@ -271,7 +271,7 @@ if( st.sidebar.checkbox("Carica i dati") ):
 		
 			
 			
-		model_load_state = st.info('Sto Creando la Rete Neurale su ' + selected_stock + ' ...')
+		model_load_state = st.info('Sto Creando la Rete Neurale su ' + selected_stock + ' Potrebbe volerci qualche minuto ...')
 
 		# Predict forecast with Prophet.
 		df_train = data[[tt,'Close']]
@@ -281,14 +281,19 @@ if( st.sidebar.checkbox("Carica i dati") ):
 
 		m = Prophet()
 		m.fit(df_train)
-		if investitore == "Long Term":
-			future = m.make_future_dataframe(periods=period)
+		frequenza = ""
+
+		future = m.make_future_dataframe(periods=period)
+
 		if investitore == "Short Term":
 			if intervallo == '1h':
-				future = m.make_future_dataframe(periods=period, freq='H')
+				frequenza = 'H'
 			if intervallo != '1h':
-				future = m.make_future_dataframe(periods=period, freq='1m')
+				frequenza = intervallo
+		if investitore == "Long Term":
+			frequenza = 'D'
 
+		future = m.make_future_dataframe(periods=period, freq = frequenza)
 		forecast = m.predict(future)
 
 		model_load_state.info('Sto Creando il grafico della predizione su ' + selected_stock + ' ...')
