@@ -284,7 +284,10 @@ if( st.sidebar.checkbox("Carica i dati") ):
 		if investitore == "Long Term":
 			future = m.make_future_dataframe(periods=period)
 		if investitore == "Short Term":
-			future = m.make_future_dataframe(periods=period, freq=intervallo)
+			if intervallo == '1h':
+				future = m.make_future_dataframe(periods=period, freq='H')
+			if intervallo != '1h':
+				future = m.make_future_dataframe(periods=period, freq='1m')
 
 		forecast = m.predict(future)
 
