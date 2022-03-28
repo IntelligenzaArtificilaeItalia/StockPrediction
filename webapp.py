@@ -227,20 +227,35 @@ if( st.sidebar.checkbox("Carica i dati") ):
 			
 			plot_raw_data1()
 
-	st.sidebar.subheader('\n\n3) Selezionare periodo di predizione')
-	n_years = st.sidebar.slider('Numero di Anni :', 0, 4)
-	period_y = n_years * 365
+	period =0
+	if investitore == "Long Term":
+		st.sidebar.subheader('\n\n3) Selezionare periodo di predizione')
+		n_years = st.sidebar.slider('Numero di Anni :', 0, 4)
+		period_y = n_years * 365
 
-	n_moth = st.sidebar.slider('Numero di Mesi :',0, 11)
-	period_m = n_moth * 30
+		n_moth = st.sidebar.slider('Numero di Mesi :',0, 11)
+		period_m = n_moth * 30
 
-	n_week = st.sidebar.slider('Numero di Settimane :', 0, 3)
-	period_w = n_week * 7
+		n_week = st.sidebar.slider('Numero di Settimane :', 0, 3)
+		period_w = n_week * 7
 
-	n_day = st.sidebar.slider('Nemro di Giorni :', 0, 6)
-	period_d = n_day
+		n_day = st.sidebar.slider('Nemro di Giorni :', 0, 6)
+		period_d = n_day
 
-	period = period_y + period_m + period_w + period_d
+		period = period_y + period_m + period_w + period_d
+	
+	if investitore == "Long Term":
+		st.sidebar.subheader('\n\n3) Selezionare periodo di predizione')
+		n_years = st.sidebar.slider('Numero di Giorni :', 0, 1)
+		period_y = n_years * 24 * 60
+
+		n_moth = st.sidebar.slider('Numero di ore :',0, 23)
+		period_m = n_moth * 60
+
+		n_week = st.sidebar.slider('Numero di minuti :', 0, 59)
+		period_w = n_week 
+
+		period = period_y + period_m + period_w 
 
 	st.sidebar.subheader('\n\n4) Selezionare numero dei titoli posseduti o da acquistare e il Prezzo($) di acquisto')
 	azioni = st.sidebar.number_input('Numero Azioni Possedute', 0.00)
@@ -266,7 +281,11 @@ if( st.sidebar.checkbox("Carica i dati") ):
 
 		m = Prophet()
 		m.fit(df_train)
-		future = m.make_future_dataframe(periods=period)
+		if investitore == "Long Term":
+			future = m.make_future_dataframe(periods=period)
+		if investitore == "Short Term":
+			future = m.make_future_dataframe(periods=period, freq=intervallo)
+
 		forecast = m.predict(future)
 
 		model_load_state.info('Sto Creando il grafico della predizione su ' + selected_stock + ' ...')
@@ -276,8 +295,11 @@ if( st.sidebar.checkbox("Carica i dati") ):
 		    
 		last_element = forecast["yhat"].iloc[-1]  
 
-		  
-		st.write(f'Grafico predizione andamento titolo tra {n_years} anni {n_moth} mesi {n_week} settimane e {n_day} giorni .')
+		if investitore == "Long Term":		  
+			st.write(f'Grafico predizione andamento titolo tra {n_years} anni {n_moth} mesi {n_week} settimane e {n_day} giorni .')
+		if investitore == "Short Term":		  
+			st.write(f'Grafico predizione andamento titolo tra {n_years} giorni {n_moth} ore e {n_week} minuti .')
+
 		fig1 = plot_plotly(m, forecast)
 		st.plotly_chart(fig1)
 
@@ -289,7 +311,13 @@ if( st.sidebar.checkbox("Carica i dati") ):
 		model_load_state.info('Sto Ragionando sulle conclusioni dell Investimento...')
 
 		st.subheader('Conclusioni investimento Titolo ' + selected_stock)
-		txt1 = st.text(f'Secondo il modello di previsione il prezzo di un singolo titolo di {selected_stock} \n tra {n_years} anni {n_moth} mesi {n_week} settimane e {n_day} giorni sarà di circa {round(last_element,3)} $ \n\n')
+
+		if investitore == "Long Term":		  
+			txt1 = st.text(f'Secondo il modello di previsione il prezzo di un singolo titolo di {selected_stock} \n tra {n_years} anni {n_moth} mesi {n_week} settimane e {n_day} giorni sarà di circa {round(last_element,3)} $ \n\n')
+		if investitore == "Short Term":		  
+			txt1 = st.text(f'Secondo il modello di previsione il prezzo di un singolo titolo di {selected_stock} \n tra {n_years} giorni {n_moth} ore e {n_week} minuti sarà di circa {round(last_element,3)} $ \n\n')
+
+		
 
 		txt2 = st.text(f'Quindi possedendo {azioni} azioni del titolo {selected_stock} acquistate a {prezzo} ciascuna\nIl valore totale, si ipotizza che potrebbe passare da \n{round((azioni*prezzo),3)} $  a  {round((azioni*last_element),3)} $  \n\n')
 
@@ -304,7 +332,7 @@ if( st.sidebar.checkbox("Carica i dati") ):
 			misurazione_err = forecast["yhat"].iloc[:-period] 
 			mae = mean_absolute_error(df_train["y"],misurazione_err)
 			mse = mean_squared_error(df_train["y"],misurazione_err)
-			txt3 = st.text(f'Metriche valutazione modello predittivo : \n 1)Errore Medio Assoluto : {round(mae,3)} \n2) Errore Medio Quadratico : {round(mse,3)}')
+			txt3 = st.text(f'Metriche valutazione modello predittivo : \n 1)Errore Medio Assoluto : {round(mae,3)} ')
 
 		model_load_state.success('Previsione su ' + selected_stock + ' Completata ...')
 		st.balloons()
