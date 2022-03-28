@@ -244,7 +244,7 @@ if( st.sidebar.checkbox("Carica i dati") ):
 
 		period = period_y + period_m + period_w + period_d
 	
-	if investitore == "Long Term":
+	if investitore == "Short Term":
 		st.sidebar.subheader('\n\n3) Selezionare periodo di predizione')
 		n_years = st.sidebar.slider('Numero di Giorni :', 0, 1)
 		period_y = n_years * 24 * 60
