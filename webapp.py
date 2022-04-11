@@ -247,10 +247,10 @@ if( st.sidebar.checkbox("Carica i dati") ):
 	if investitore == "Short Term":
 		st.sidebar.subheader('\n\n3) Selezionare periodo di predizione')
 
-		n_moth = st.sidebar.slider('Numero di ore :',0, 23)
-		period_m = n_moth * 60
+		n_moth = st.sidebar.slider('Numero di giorni :',0, 30)
+		period_m = n_moth * 24
 
-		n_week = st.sidebar.slider('Numero di minuti :', 0, 59)
+		n_week = st.sidebar.slider('Numero di ore :', 0, 23)
 		period_w = n_week 
 
 		period =  period_m + period_w 
@@ -304,7 +304,7 @@ if( st.sidebar.checkbox("Carica i dati") ):
 		if investitore == "Long Term":		  
 			st.write(f'Grafico predizione andamento titolo tra {n_years} anni {n_moth} mesi {n_week} settimane e {n_day} giorni .')
 		if investitore == "Short Term":		  
-			st.write(f'Grafico predizione andamento titolo tra {n_years} giorni {n_moth} ore e {n_week} minuti .')
+			st.write(f'Grafico predizione andamento titolo tra  {n_moth} giorni e {n_week} ore .')
 
 		fig1 = plot_plotly(m, forecast)
 		st.plotly_chart(fig1)
