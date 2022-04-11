@@ -321,7 +321,7 @@ if( st.sidebar.checkbox("Carica i dati") ):
 		if investitore == "Long Term":		  
 			txt1 = st.text(f'Secondo il modello di previsione il prezzo di un singolo titolo di {selected_stock} \n tra {n_years} anni {n_moth} mesi {n_week} settimane e {n_day} giorni sarà di circa {round(last_element,3)} $ \n\n')
 		if investitore == "Short Term":		  
-			txt1 = st.text(f'Secondo il modello di previsione il prezzo di un singolo titolo di {selected_stock} \n tra {n_years} giorni {n_moth} ore e {n_week} minuti sarà di circa {round(last_element,3)} $ \n\n')
+			txt1 = st.text(f'Secondo il modello di previsione il prezzo di un singolo titolo di {selected_stock} \n  tra  {n_moth} giorni e {n_week} ore sarà di circa {round(last_element,3)} $ \n\n')
 
 		
 
